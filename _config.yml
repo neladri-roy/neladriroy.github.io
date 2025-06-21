@@ -1,6 +1,6 @@
 title: "Neladri Roy"
 description: "My professional online resume"
-baseurl: ""        # the subpath of your site, e.g. /resume
+baseurl: "/resume"        # the subpath of your site, e.g. /resume
 url: "https://neladri-roy.github.io"
 theme: minima      # lightweight Jekyll theme
 plugins:
