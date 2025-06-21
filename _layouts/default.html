@@ -3,21 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>{{ page.title }} • {{ site.title }}</title>
 
-  <!-- Inter font + FontAwesome -->
+  <!-- Google Font + FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <!-- ALL-IN-ONE CSS -->
+  <style>
+    /* RESET & GLOBAL */
+    * { box-sizing:border-box; margin:0; padding:0 }
+    html { scroll-behavior:smooth }
+    body {
+      font-family:'Inter',sans-serif;
+      background:#f9fafb; color:#333;
+      line-height:1.6;
+    }
+    a { text-decoration:none }
 
-  {{ content_for_head }}
+    /* NAVBAR */
+    nav {
+      position:sticky; top:0; z-index:100;
+      background:#fff; border-bottom:1px solid #e5e7eb;
+      display:flex; justify-content:center; gap:2rem;
+      padding:1rem 0;
+    }
+    nav a {
+      color:#555; font-weight:600; position:relative;
+      transition:color .2s;
+    }
+    nav a:hover { color:#1f2937 }
+    nav a.active { color:#3b82f6 }
+    nav a.active::after {
+      content:''; position:absolute;
+      bottom:-4px; left:0; right:0;
+      height:2px; background:#3b82f6;
+    }
+
+    /* HERO / ABOUT */
+    #about {
+      position:relative; text-align:center;
+      padding:4rem 1rem; background:#fff; overflow:hidden;
+    }
+    #about .hero-icons {
+      position:absolute; top:20%; left:50%;
+      transform:translateX(-50%);
+      display:flex; gap:3rem; opacity:.08;
+    }
+    #about .hero-icons i { font-size:4rem }
+    #about img {
+      width:140px; height:140px; border-radius:50%;
+      border:4px solid #3b82f6; object-fit:cover;
+    }
+    #about h1 {
+      margin:1rem 0 .5rem; font-size:2rem; color:#111;
+    }
+    #about .icons {
+      display:flex; justify-content:center; gap:1rem;
+      margin-bottom:1rem;
+    }
+    #about .icons a {
+      color:#3b82f6; font-size:1.25rem;
+      transition:opacity .2s;
+    }
+    #about .icons a:hover { opacity:.7 }
+    #about p {
+      max-width:600px; margin:0 auto; color:#666; font-size:1rem;
+    }
+
+    /* TIMELINE */
+    section h2 {
+      text-align:center; margin:2rem 0 1rem; color:#444;
+    }
+    .timeline {
+      position:relative; max-width:900px;
+      margin:0 auto 4rem; padding:0 1rem;
+    }
+    .timeline::before {
+      content:''; position:absolute;
+      top:0; bottom:0; left:50%; transform:translateX(-50%);
+      width:4px; background:#3b82f6; border-radius:2px;
+    }
+    .timeline-item {
+      position:relative; width:50%; padding:1rem 2rem;
+      opacity:0; transform:translateY(30px);
+      animation:fadeUp .6s ease-out forwards;
+    }
+    .timeline-item:nth-child(odd)  { left:0; text-align:right }
+    .timeline-item:nth-child(even) { left:50% }
+    .timeline-item::before {
+      content:'\f121';
+      font-family:"Font Awesome 5 Free"; font-weight:400;
+      position:absolute; top:0; left:50%;
+      transform:translate(-50%,-50%);
+      color:#3b82f6; font-size:1.25rem;
+      background:#fff; padding:.3rem; border-radius:50%;
+      box-shadow:0 0 0 4px #dbeafe;
+    }
+    .timeline-item h3 { margin-bottom:.25rem }
+    .timeline-item .date {
+      display:block; font-size:.9rem; color:#555;
+      margin-bottom:.75rem;
+    }
+    .timeline-item p { color:#666 }
+    @keyframes fadeUp {
+      to { opacity:1; transform:translateY(0) }
+    }
+
+    /* SKILLS */
+    .skill-container {
+      display:flex; justify-content:space-around; flex-wrap:wrap;
+      max-width:900px; margin:0 auto 4rem; padding:0 1rem;
+    }
+    .skill-group { flex:1; min-width:280px; padding:0 1rem }
+    .skill-group h3 {
+      text-align:center; margin-bottom:1rem; color:#555;
+    }
+    .skill-item { margin-bottom:1rem }
+    .skill-item .labels {
+      display:flex; justify-content:space-between;
+      font-size:.875rem; color:#555; margin-bottom:.25rem;
+    }
+    .skill-item .bar {
+      background:#e5e7eb; border-radius:4px; height:1rem; overflow:hidden;
+    }
+    .skill-item .bar span {
+      display:block; height:100%; background:#3b82f6;
+    }
+
+    /* PROJECTS */
+    .project-list {
+      display:flex; justify-content:space-around; flex-wrap:wrap;
+      max-width:900px; margin:0 auto 4rem; padding:0 1rem;
+    }
+    .project {
+      width:280px; text-align:center; margin:1rem;
+    }
+    .project img {
+      width:120px; height:120px; border-radius:50%;
+      object-fit:cover; margin-bottom:1rem;
+    }
+    .project h3 { margin-bottom:.5rem }
+    .project p { color:#666; font-size:.9rem; margin-bottom:.75rem }
+    .project .btn {
+      display:inline-block; margin:.25rem;
+      padding:.5rem 1rem; border:1px solid #ccc;
+      border-radius:4px; font-size:.875rem; color:#333;
+      transition:background .2s;
+    }
+    .project .btn:hover { background:#f0f0f0 }
+
+    /* PUBLICATIONS */
+    .publication {
+      max-width:800px; margin:2rem auto; padding:0 1rem;
+    }
+    .publication .year {
+      font-size:2rem; font-weight:300; color:#999; margin-bottom:.5rem;
+    }
+    .publication h4 {
+      margin-bottom:.25rem; color:#333;
+    }
+    .publication p {
+      margin-bottom:.25rem; color:#555; font-size:.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align:center; padding:2rem 0; color:#999; background:#fff;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav{flex-wrap:wrap}
+      .timeline,.timeline::before{left:0!important;width:100%!important}
+      .timeline-item{width:100%!important;text-align:left!important;padding-left:3.5rem!important}
+      .timeline-item::before{left:1rem!important}
+      .skill-container,.project-list{flex-direction:column;align-items:center}
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- STICKY NAVIGATION -->
+  <!-- NAV -->
   <nav>
     <a href="#about" class="active">About</a>
     <a href="#career">Career</a>
@@ -26,12 +194,86 @@
     <a href="#publications">Publications</a>
   </nav>
 
-  <!-- PAGE CONTENT -->
-  {{ content }}
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="hero-icons">
+      <i class="fab fa-python"></i>
+      <i class="fab fa-ubuntu"></i>
+      <i class="fas fa-terminal"></i>
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <img src="your-photo.jpg" alt="Your Name">
+    <h1>Your Name</h1>
+    <div class="icons">
+      <a href="https://github.com/username"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/username"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com/in/username"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:email@example.com"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>I’m a researcher focusing on medical imaging, pattern recognition &amp; machine learning. I strive for open source &amp; open data.</p>
+  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    © {{ site.time | date: "%Y" }} {{ site.title }}
-  </footer>
-</body>
-</html>
+  <!-- CAREER -->
+  <section id="career">
+    <h2>My Career</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Senior Data Scientist @ Saint-Gobain</h3>
+        <span class="date">April 2022 – Present</span>
+        <p>Develop and industrialize AI solutions for different businesses of Saint-Gobain.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Research Engineer &amp; Project Manager @ Saint-Gobain Paris</h3>
+        <span class="date">April 2018 – March 2022</span>
+        <p>Built R&amp;D prototypes in medical imaging; led cross-functional teams to productionize models.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skill-container">
+      <div class="skill-group">
+        <h3>Research</h3>
+        <div class="skill-item">
+          <div class="labels"><span>Melanoma Cancer</span><span>95%</span></div>
+          <div class="bar"><span style="width:95%"></span></div>
+        </div>
+        <div class="skill-item">
+          <div class="labels"><span>Polarized Imaging</span><span>80%</span></div>
+          <div class="bar"><span style="width:80%"></span></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Technical</h3>
+        <div class="skill-item">
+          <div class="labels"><span>React</span><span>90%</span></div>
+          <div class="bar"><span style="width:90%"></span></div>
+        </div>
+        <div class="skill-item">
+          <div class="labels"><span>Docker</span><span>95%</span></div>
+          <div class="bar"><span style="width:95%"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-list">
+      <div class="project">
+        <img src="i2cvb-logo.png" alt="I2CVB Retinopathy">
+        <h3><a href="#">I2CVB Retinopathy</a></h3>
+        <p>Medical imaging development for retinopathy.</p>
+        <a class="btn" href="#">⭐ Star</a><a class="btn" href="#">🍴 Fork</a>
+      </div>
+      <div class="project">
+        <img src="viper-logo.png" alt="VIPeR">
+        <h3><a href="#">VIPeR</a></h3>
+        <p>Polarization-based navigation for robots.</p>
+        <a class="btn" href="#">⭐ Star</a><a class="btn" href="#">🍴 Fork</a>
+      </div>
+    </div>
+  </section>
