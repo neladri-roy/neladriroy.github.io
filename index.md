@@ -3,14 +3,6 @@ layout: default
 title: "Your Name | Resume"
 ---
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#career">Career</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#publications">Publications</a>
-</nav>
-
 <section id="about">
   <!-- decorative icons -->
   <div class="hero-icons">
