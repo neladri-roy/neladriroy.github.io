@@ -4,21 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} • {{ site.title }}</title>
-  
-  <!-- Inter font + FontAwesome -->
+
+  <!-- Inter & FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
-  
-  <!-- Custom styles -->
+  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
   {{ content_for_head }}
 </head>
 <body>
 
+  <!-- NAV -->
+  <nav>
+    <a href="#about" class="active">About</a>
+    <a href="#career">Career</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+  </nav>
+
   {{ content }}
 
-  <footer style="text-align:center; padding:2rem 0; color:#999;">
-    © {{ site.time | date: "%Y" }} Your Name
+  <footer>
+    © {{ site.time | date: "%Y" }} {{ site.title }}
   </footer>
 </body>
 </html>
