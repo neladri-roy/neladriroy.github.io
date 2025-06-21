@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>{{ page.title }} • {{ site.title }}</title>
 
-  <!-- Inter & FontAwesome -->
+  <!-- Inter font + FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
 
@@ -16,7 +17,7 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- STICKY NAVIGATION -->
   <nav>
     <a href="#about" class="active">About</a>
     <a href="#career">Career</a>
@@ -25,8 +26,10 @@
     <a href="#publications">Publications</a>
   </nav>
 
+  <!-- PAGE CONTENT -->
   {{ content }}
 
+  <!-- FOOTER -->
   <footer>
     © {{ site.time | date: "%Y" }} {{ site.title }}
   </footer>
