@@ -12,14 +12,30 @@ title: "Your Name | Resume"
 </nav>
 
 <section id="about">
+  <!-- decorative icons -->
+  <div class="hero-icons">
+    <i class="fab fa-python"></i>
+    <i class="fab fa-ubuntu"></i>
+    <i class="fas fa-terminal"></i>
+    <i class="fas fa-graduation-cap"></i>
+  </div>
+
+  <!-- your photo & name -->
   <img src="your-photo.jpg" alt="Your Name">
   <h1>Your Name</h1>
+
+  <!-- social links -->
   <div class="icons">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/username"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/username"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/in/username"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:email@example.com"><i class="fas fa-envelope"></i></a>
   </div>
-  <p>I’m a researcher focusing on medical imaging, pattern recognition & machine learning. I strive for open source & open data.</p>
+
+  <p>
+    I’m a researcher focusing on medical imaging, pattern recognition &amp; machine learning.
+    I strive for open source &amp; open data.
+  </p>
 </section>
 
 <section id="career">
